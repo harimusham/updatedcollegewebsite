@@ -1,0 +1,295 @@
+<html>
+    <head>
+        <style>
+            img
+            {
+                border:3px solid black;
+                
+                margin-bottom:10px;
+            }
+            .abcf
+            {
+          
+          
+            
+                display:inline-block;
+               
+                position:absolute;
+                left:5px;
+
+               
+                margin-top:0px;
+                border:5px solid black;
+                height:200px;
+                right:140px;
+                width:25%;
+                
+            
+       
+          
+           
+            }
+            .pprofile
+            {
+                position:relative;
+                left:100px;
+                gap:10rem;
+                padding:10px;
+            }
+            
+            .psmarks
+            {
+              
+                border:3px solid black;
+                position: relative;
+                left:250px;
+                gap:10rem;
+            
+
+            }
+            .custom-flex 
+            {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            }
+            .psatten
+            {
+                border:2px solid black;
+                position:relative;
+                padding:10px;
+                left:240px;
+            }
+            span
+            {
+                color:brown;
+                border:1px solid black;
+                border-radius:10px;
+                background-color:black;
+                color:greenyellow;
+            }
+        </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <img src="static/sreyasheader.jpg"  width="100%" height="130px">
+        </div>
+    
+        <h2>welcome....... {{pusername}}  your ward id is {{stuid}}</h2>
+        <hr style="height:5px solid black;">
+        <div class="custom-flex">
+            <div class="list-group mb-4 abcf">
+                <div>
+                    <a href="{{ url_for('ppdisplay',stuid=stuid, pusername=pusername) }}" class="list-group-item list-group-item-action border border-5 rounded bg-success p-2 text-dark bg-opacity-75">Profile</a>
+                </div>
+                <div>
+                    <a href="{{ url_for('pmdisplay',stuid=stuid,pusername=pusername,results=results[0]) }}" class="list-group-item list-group-item-action border border-5 rounded bg-success p-2 text-dark bg-opacity-75">Marks</a>
+                </div> 
+                <div>
+                    <a href="{{ url_for('padisplay', stuid=stuid, pusername=pusername) }}" class="list-group-item list-group-item-action border border-5 rounded bg-success p-2 text-dark bg-opacity-75">Attendance</a>
+                </div>
+            </div>
+        <div>
+
+    {% if is_profile %}
+    <div class="pprofile">
+            <table class="table table-primary  table-striped table-hover table-bordered pprofile">
+                <tr>
+                    <th style="text-decoration:underline;">PERSONAL DETAILS:: </th>
+                    <td style="color:black"></td>
+                    <td style="color:black"></td>
+                </tr>
+                <tr>
+                    <th>STUDENT ID:: </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[0]}}</td>
+                </tr>
+                <tr>
+                    <th>USER NAME:: </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[2]}}</td>
+                </tr>
+                
+                <tr>
+                    <th>FULL NAME:: </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[3]}}</td>
+                </tr>
+                <tr>
+                    <th>FATHER NAME:: </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[4]}}</td>
+                </tr>
+                <tr>
+                    <th>MOTHER NAME:: </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[5]}}</td>
+                </tr>
+                <tr>
+                    <th>MOBILE NUMBER[student]:: </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[6]}}</td>
+                </tr>
+                <tr>
+                    <th>MOBILE NUMBER[parent]:: </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[7]}}</td>
+                </tr>
+                <tr>
+                    <th>DATE OF BIRTH:: </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[8]}}</td>
+                </tr>
+                <tr>
+                    <th>GENDER </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[9]}}</td>
+                </tr>
+                <tr>
+                    <th>EMAIL:: </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[10]}}</td>
+                </tr>
+                <tr>
+                    <th>DEPARTEMENT:: </th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[11]}}</td>
+                </tr>
+                <tr>
+                    <th>SSC-MARKS</th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[12]}}</td>
+                </tr>
+                <tr>
+                    <th>INTER MARKS</th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[13]}}</td>
+                </tr>
+                <tr>
+                    <th>AADHAAR NUMBER</th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[14]}}</td>
+                </tr>
+                <tr>
+                    <th>ADDRESS</th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[15]}}</td>
+                </tr>
+                <tr>
+                    <th>CITY</th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[16]}}</td>
+                </tr>
+                <tr>
+                    <th>STATE</th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[17]}}</td>
+                </tr>
+                <tr>
+                    <th>COUNTRY</th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[18]}}</td>
+                </tr>
+                <tr>
+                    <th>REGISTRATION APPROVED BY</th>
+                    <td>::</td>
+                    <td style="color:brown">{{results[19]}}</td> 
+                </tr>
+               
+               
+            </table>
+    </div>
+    {% endif %}
+
+        {% if  is_smarks %}
+            <div class="psmarks">
+
+                <table class=" table  table-hover table-bordered" style="width:100%;">
+                     
+                       
+                    <thead> 
+                        <tr>
+                            <th style="text-align:center;background-color: red; color:white;border-radius:20px;">III-II SEM RESULTS</th>
+                           
+                        </tr>
+                      <tr>
+                        <th style="text-align:center;background-color:#04AA6D;">SUBJECT NAME</th>
+                        <th style="text-align:center;background-color:#04AA6D;">INTERNAL-MARKS</th>
+                        <th style="text-align:center;background-color:#04AA6D;">EXTERNAL MARKS</th>
+                        <th style="text-align:center;background-color:#04AA6D;">TOTAL-MARKS</th>
+                        <th style="text-align:center;background-color:#04AA6D;">Grade </th>
+                      </tr>
+        
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th style="text-align:center;">Machine Learning</th>
+                        <td style="text-align:center;" >{{results[2]}}</td>
+                        <td style="text-align:center;">{{results[3]}}</td>
+                        <td style="text-align:center;">{{results[4]}}</td>
+                        <td style="text-align:center;" >{{results[5]}}</td>
+                      </tr>
+                      <tr>
+                        <th style="text-align:center;" >Compiler Designing</th>
+                        <td style="text-align:center;" >{{results[6]}}</td>
+                        <td style="text-align:center;" >{{results[7]}}</td>
+                        <td style="text-align:center;">{{results[8]}}</td>
+                        <td style="text-align:center;" >{{results[9]}}</td>
+                      </tr>
+                      <tr>
+                        <th style="text-align:center;">Scripting language</th>
+                        <td style="text-align:center;" >{{results[10]}}</td>
+                        <td style="text-align:center;" >{{results[11]}}</td>
+                        <td style="text-align:center;" >{{results[12]}}</td>
+                        <td style="text-align:center;" >{{results[13]}}</td>
+                      </tr>
+                      <tr>
+                        <th style="text-align:center;" >DPPM</th>
+                        <td style="text-align:center;" >{{results[14]}}</td>
+                        <td style="text-align:center;">{{results[15]}}</td>
+                        <td style="text-align:center;">{{results[16]}}</td>
+                        <td style="text-align:center;" >{{results[17]}}</td>
+                      </tr>
+                     
+                      <tr>
+                        <th style="text-align:center;" >CGPA</th>
+                        <td ></td>
+                        <td class="table-danger" style="text-align:center;">{{results[18]}}</td>
+                        <td ></td>
+                      </tr>
+
+                      <tr>
+                        <th style="text-align:center;">GPA</th>
+                        <td></td>
+                        <td class="table-danger" style="text-align:center;">{{results[19]}}</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+                  
+            {% endif %}
+
+            {% if  is_attendance %}
+                <div class="psatten">
+                    <table>
+                    <tr>
+                        <th style="text-align:center;background-color: red; color:white;border-radius:10px;">Attendance</th>
+                       
+                    </tr>
+                   
+                            
+                </table>
+
+                    <h3>Your Student  Current Semister Attendence::
+                        <span> {{results[1]}} </span>
+                    </h3>
+                
+                </div>
+            {% endif %}
+
+          
+        </div>
+    </body>
+</html>

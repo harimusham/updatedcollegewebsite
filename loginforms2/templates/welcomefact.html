@@ -1,0 +1,375 @@
+<html>
+    <head>
+        <style>
+            img
+            {
+                border:5px solid black;
+                border-radius:20px;
+                margin-bottom:10px;
+            }
+            .fabc
+            {
+               
+              
+             
+                display:inline-block;
+                height:370px;
+                border:3px solid black;
+                position: absolute;
+                left:10px;
+                width:25%;
+            
+               
+               
+            }
+            .faddmarkss
+            {
+                border:2px solid black;
+                padding:10px;
+                border-radius:20px;
+                width: 500px;
+                position: relative;
+                left:200px;
+            }
+            .addnotes
+            {
+                border:2px solid black;
+        
+                height:330px;
+                border-radius:20px;
+                padding:15px;
+                position: relative;
+                left:200px;
+                font-weight:bold;
+            }
+            .addjobs
+            {
+              border:2px solid black;
+              position:relative;
+              left:200px;
+              height:500px;
+              padding:10px;
+              width:500px;
+              border-radius:15px;
+              font-weight:bold;
+            }
+            .custom-flex {
+                display: flex;
+                justify-content: center;
+                gap: 5rem;
+            }
+            .gfprofile
+            {
+                position:relative;
+                left:200px;
+            }
+            span
+            {
+                font-style:italic;
+                text-decoration:underline;
+            }
+            .vl
+            {
+                border:2px solid black;
+                height:1000px;
+                position: relative;
+                left:150px;
+            }
+            .marks
+            {
+                width:50%;
+                padding:5px;
+                position: relative;
+                left:100px;
+            }
+           
+        </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+        <body>
+           
+            <div>
+                <img src="static/sreyasheader.jpg" width="100%" height="130px">
+            </div>
+
+            <h3>HI.......<span>{{fname}}</span> </h3>
+            <hr>
+
+            
+            <div class="custom-flex">
+                <div class="list-group mb-4 fabc">
+                    <div>
+                        <a href="{{ url_for('getprofile',fname=fname, name=name, facid=facid) }}" class="list-group-item list-group-item-action border border-5 rounded bg-success p-2 text-dark bg-opacity-75">Profile</a>
+                    </div>  
+                    <div>
+                        <a href="{{ url_for('faddmarks',fname=fname, name=name, facid=facid) }}" class="list-group-item list-group-item-action border border-5 rounded bg-success p-2 text-dark bg-opacity-75">ADD MARKS </a>
+                    </div>
+                    <div>
+                        <a href="{{ url_for('add_notes',fname=fname, name=name, facid=facid) }}" class="list-group-item list-group-item-action border border-5 rounded bg-success p-2 text-dark bg-opacity-75">ADD NOTES</a>
+                    </div>
+                    <div>
+                    <a href="{{url_for('add_jobs',fname=fname,name=name,  facid=facid)}}" class="list-group-item list-group-item-action border border-5 rounded bg-success p-2 text-dark bg-opacity-75">ADD CAREER GUIDENCE</a>
+                    </div>
+                    <div>
+                    <a href="{{ url_for('add_attendance') }}" class="list-group-item list-group-item-action border border-5 rounded bg-success p-2 text-dark bg-opacity-75">ADD ATTENDANCE</a>
+                    </div>
+                    <div>
+                    <a href="http://results.jntuh.ac.in/" class="list-group-item list-group-item-action border border-5 rounded bg-success p-2 text-dark bg-opacity-75" target="_blank">Academic Results</a>
+                    </div>
+                </div>
+
+                <div class="vl"></div>
+                
+                <div class="gfprofile">
+                {% if  is_profile %}
+                    <div class="getprofile">
+
+                        <table class="table   table-striped table-hover table-bordered">
+                            <tr>
+                                <th style="text-decoration:underline;">PERSONAL DETAILS:: </th>
+                                <td style="color:black"></td>
+                                <td style="color:black"></td>
+    
+                            </tr>
+                            
+                            <tr>
+                                <th>Faculty Id</th>
+                                <td>::</td>
+                                <td style="color:brown">{{profileresults[0]}}</td>
+                            </tr>
+                           
+                            <tr>
+                                <th>User Name</th>
+                                <td>::</td>
+                                <td style="color:brown">{{profileresults[1]}}</td>
+                            </tr>
+                            
+                            <tr>
+                                <th>Full Name</th>
+                                <td>::</td>
+                                <td style="color:brown">{{profileresults[3]}}</td>
+                            </tr>
+                            <tr>
+                                <th>Department </th>
+                                <td>::</td>
+                                <td style="color:brown">{{profileresults[4]}}</td>
+                            </tr>
+                            <tr>
+                                <th>Designation</th>
+                                <td>::</td>
+                                <td style="color:brown">{{profileresults[5]}}</td>
+                            </tr>
+                            <tr>
+                                <th>Mobile Number</th>
+                                <td>::</td>
+                                <td style="color:brown">{{profileresults[6]}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>::</td>
+                                <td style="color:brown">{{profileresults[7]}}</td>
+                            </tr>
+                            <tr>
+                                <th>Specification</th>
+                                <td>::</td>
+                                <td style="color:brown">{{profileresults[8]}}</td>
+                            </tr>
+                            <tr>
+                                <th>Address </th>
+                                <td>::</td>
+                                <td style="color:brown">{{profileresults[9]}}</td>
+                            </tr>
+                           
+                        </table>
+                        </div>
+            
+                    </div>
+                {% endif %}
+                </div>
+
+            {% if  add_marks %}
+           
+                <div class="faddmarkss">
+                    <h3 style="text-decoration:underline;">Please Insert Student Marks..</h3>
+                   
+                   
+                    <form method="POST" action="{{url_for('faddmarks',fname=fname,name=name,facid=facid) }}">
+                        
+                            <label for="sid">Sid::</label>
+                            <input type="number" id="sid" class="marks"  style="position: relative;left:160px;" placeholder="studentid" name="sid">
+                            <br>
+                            <br>
+                       
+    
+                            <label for="semisteryear">Sem::</label>
+                            <input type="text" id="semisteryear"   style="position: relative;left:150px;" class="marks" placeholder="semister" name="syear">
+                            <br>
+                            <br>
+                        
+                            <label for="mlin">ML-Internal</label>
+                            <input type="number"  id="mlin"  class="marks"  style="position: relative;left:99px;" placeholder="ml-internal" name="mlint">
+                            <br>
+                            <br>
+                       
+                       
+                            <label for="mlext">ML-External</label>
+                            <input type="number"  id="mlext"   style="position: relative;left:99px;" class="marks" placeholder="ml-external" name="mlext">
+                            <br>
+                            <br>
+                            <label for="mltotal">ML-Total</label>
+                            
+                              <input type="number"  id="mltotal"   style="position: relative;left:125px;" class="marks" placeholder="ml-total" name="mltotal">
+                            <br>
+                            <br>
+                            <label for="mlgrade">ML-Grade</label>
+                        
+                              <input type="text"  id="mlgrade"   style="position: relative;left:115px;"class="marks" placeholder="ml-grade" name="mlgrade">
+                            <br>
+                            <br>
+                    
+                            <label for="cdint">CD-Internal</label>
+                            
+                              <input type="number" id="cdint"  style="position: relative;left:100px;"  class="marks" placeholder="cd-internal" name="cdint">
+                            <br>
+                            <br>
+                        
+                            <label for="cdext">CD-External</label>
+                            
+                              <input type="number"  id="cdext"   style="position: relative;left:100px;" class="marks" placeholder="cd-external" name="cdext">
+                           
+                              <br>
+                              <br>
+                            <label for="cdtotal">CD-Total</label>
+                            
+                              <input type="number"  id="cdtotal"  style="position: relative;left:125px;" class="marks" placeholder="cd-total" name="cdtotal">
+                            <br>
+                            <br>
+                            <label for="cdgrade">CD-Grade</label>
+                            
+                              <input type="text"  id="cdgrade"  style="position: relative;left:115px;" class="marks" placeholder="cd-grade" name="cdgrade">
+                            <br>
+                            <br>
+                
+                            <label for="slint">SL-Internal</label>
+                            
+                              <input type="number" id="slint"  style="position: relative;left:105px;" class="marks" placeholder="sl-internal" name="slint">
+                            <br>
+                            <br>
+                            <label for="slext">SL-External</label>
+                            <input type="number" id="slext"  style="position: relative;left:105px;" class="marks" placeholder="sl-external" name="slext">
+                            <br>
+                            <br>
+                            <label for="sltotal">SL-Total</label>
+                            <input type="number"  id="sltotal"  style="position: relative;left:135px;"  class="marks" placeholder="sl-total" name="sltotal">
+                            <br>
+                            <br>
+                            <label for="slgrade">SL-Grade</label>
+                            
+                            <input type="text"  id="slgrade"  style="position: relative;left:125px;" class="marks" placeholder="sl-grade" name="slgrade">
+                            <br>
+                            <br>
+                            <label for="dppmint">DPPM-Internal</label>
+                            
+                            <input type="number"  id="dppmint" style="position: relative;left:78px;"  class="marks" placeholder="dppm-internal" name="dppmint">
+                            <br>
+                            <br>
+            
+                        
+                
+                            <label for="dppmext">DPPM-External</label>
+                            <input type="number" id="dppmext"  style="position: relative;left:77px;" class="marks" placeholder="dppm-external" name="dppmext">
+                            <br>
+                       
+                            <br>
+                       
+                            <label for="dppmtotal">DPPM-Total</label>
+                            
+                              <input type="number"id="dppmtotal"  style="position: relative;left:107px;" class="marks" placeholder="dppmtotal" name="dppmtotal">
+                            
+                        
+                            <br>
+                            <br>
+                            <label for="dppmgrade">DPPM-Grade</label>
+                            
+                              <input type="text" id="dppmgrade"  style="position: relative;left:96px;" class="marks" placeholder="dppmgrade" name="dppmgrade">
+                            
+                        <br>
+            
+                        <br>
+                            <label for="cgpa">CGPA</label>
+                        
+                              <input type="number"  id="cgpa"  style="position: relative;left:160px;" class="marks" placeholder="cgpa" name="cgpa">
+                            <br>
+                       
+                            <br>
+                            <label for="gpa">gpa</label>
+                            <input type="number" id="gpa"  style="position: relative;left:170px;" class="marks" placeholder="gpa" name="gpa">
+                            <br>
+            
+                            <br>
+                        <input type="submit" value="Submit" style="position: relative;left:200px;"  href="/">
+                    </form>
+                </div>
+            {% endif %}
+            
+         
+            {% if add_notes %}
+            
+            <div class="addnotes">
+                
+                <h4 style="font-weight:bold;text-decoration:underline;">Insert Student Notes</h4>
+                
+                <form method="POST" action="{{ url_for('add_notes', fname=fname, name=name, facid=facid) }}">
+                <label  style="text-decoration:underline;" for="faccid">Faculty Id</label>
+                <input type="text" style="position:relative;left:40px;" id="faccid" name="facname">
+                <br><br>
+                <label for="subcode">Subject Code</label>
+                <input type="number"style="position:relative;left:9px;" id="subcode" name="subcode">
+                <br><br>
+                <label for="subname">Subject Name</label>
+                <input type="text" style="position:relative;left:3px;" id="subname" name="subname">
+                <br><br>
+                <label for="sublink">Subject Link </label>
+                <input type="url"  style="position:relative;left:19px;" id="sublink" name="sublink">
+                <br><br>
+                <input type="submit" style="position:relative;left:150px;border-radius:10px;padding:5px;text-decoration:underline;font-weight:bold;" value="Submit" href="/">
+                </form>
+            </div>
+            {% endif %}
+
+            {% if add_jobs %}
+            <div class="addjobs">
+                <form method="POST" action="{{ url_for('add_jobs', fname=fname, name=name, facid=facid) }}">
+                    <h3>Insert Job Details</h3>
+                    <label for="companyname">Company_Name</label>
+                    <input type="text" id="companyname"  style="position:relative;left:19px;" name="companyname">
+                    <br>
+                    <br>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" style="position:relative;left:76px;"  name="email">
+                    <br>
+                    <br>
+                    <label for="jobposition">Job_Position</label>
+                    <input type="text" id="jobposition" style="position:relative;left:48px;"  name="jobposition">
+                    <br>
+                    <br>
+                    <label for="location">Location</label>
+                    <input type="text" id="location" style="position:relative;left:75px;"  name="location">
+                    <br>
+                    <br>
+                    <label for="requriments">Requriments</label>
+                    <input type="text" id="requriments" style="position:relative;left:31px;"  name="requriments">
+                    <br>
+                    <br>
+                    <label for="url">Url</label>
+                    <input type="url" id="url" style="position:relative;left:100px;"  name="url">
+                    <br>
+                    <br>
+                    <input type="submit" style="position:relative;left:190px;"  value="Submit" href="/">
+                </form>
+            </div>
+            {% endif %}
+
+        </body>
+    </head>
+</html>
